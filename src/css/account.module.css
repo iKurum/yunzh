@@ -1,0 +1,9 @@
+.sp {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+}
+
+.sp>div {
+  margin-bottom: 4rem !important;
+}

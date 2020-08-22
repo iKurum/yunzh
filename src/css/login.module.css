@@ -1,0 +1,52 @@
+.banner {
+  height: 480px;
+  color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.login {
+  background-color: rgba(255, 255, 255, .9);
+  max-width: 370px;
+  height: 340px;
+  border-radius: 6px;
+  padding: 2rem 0 1rem 0;
+}
+
+.way span {
+  color: #000;
+  display: inline-block;
+  padding-bottom: 6px;
+  font-size: 20px;
+  opacity: .8;
+  cursor: pointer;
+}
+
+.choseWay {
+  border-bottom: 2px solid #000000;
+}
+
+.slogan p:first-child {
+  font-size: 50px;
+}
+
+.slogan p:last-child {
+  font-size: 34px;
+  opacity: .8;
+}
+
+.formInput {
+  padding: 2rem 2rem 1rem;
+}
+
+.formInput input,
+.formInput button {
+  min-height: 40px;
+  font-size: large;
+}
+
+.iw div {
+  color: #000;
+  cursor: pointer;
+}

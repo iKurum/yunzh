@@ -1,0 +1,8 @@
+.ca {
+  margin: 20px 10px 0 !important;
+  border-radius: 10px !important;
+}
+
+.h100 {
+  height: calc(100% - 20px);
+}
