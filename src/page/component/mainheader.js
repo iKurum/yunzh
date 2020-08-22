@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import Css from '../../css/header.module.css';
+import Css from 'css/header.module.css';
 
 export function ManHeader() {
     const { Header } = Layout;
@@ -22,7 +22,7 @@ export function ManHeader() {
         </div>
     );
 
-    console.log('ManHeader ---');
+    // console.log('ManHeader ---');
     return (
         <Header style={{
             padding: '0 10px',

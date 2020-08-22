@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Row, Col } from 'antd';
-import { Filter } from 'page/componet/filter';
-import { Content } from 'page/componet/content';
-import { Retrieval } from 'page/componet/retrieval';
-import { CollapsePanel } from 'page/componet/collapsePanel';
-import { SubBtn } from 'page/componet/subBtn';
-import { Excel } from 'page/componet/excel';
+import { Filter } from 'page/component/filter';
+import { Content } from 'page/component/content';
+import { Retrieval } from 'page/component/retrieval';
+import { CollapsePanel } from 'page/component/collapsePanel';
+import { SubBtn } from 'page/component/subBtn';
+import { Excel } from 'page/component/excel';
 import { VerticalAlignBottomOutlined } from '@ant-design/icons';
-import { Tips } from 'page/componet/tips';
+import { Tips } from 'page/component/tips';
+import { Cont } from 'page/component/cont';
 
-export function Electronic() {
+function Electronic() {
   const columns = [
     {
       title: '订单完成时间',
@@ -81,7 +82,7 @@ export function Electronic() {
     { o: 1, p: '收款账号', fn: 'collextion-account' },
     { o: 1, p: '收款户名', fn: 'payee' },
   ];
-  const tab = (
+  const html = (
     <>
       <Tips
         text={['温馨提示：', '仅部分渠道支持查询电子回单，订单完成后第二个自然日可查，特殊情况可能会稍有延迟。']}
@@ -109,5 +110,7 @@ export function Electronic() {
     console.log('Success: ', vlues);
   }
 
-  return <Content data={tab} />
+  return <Cont p={<Content data={html} />} />;
 }
+
+export default Electronic;

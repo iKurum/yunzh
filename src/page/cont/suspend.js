@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Row } from 'antd';
-import { Content } from 'page/componet/content';
-import { Filter } from 'page/componet/filter';
-import { SubBtn } from 'page/componet/subBtn';
-import { Excel } from 'page/componet/excel';
+import { Content } from 'page/component/content';
+import { Filter } from 'page/component/filter';
+import { SubBtn } from 'page/component/subBtn';
+import { Excel } from 'page/component/excel';
 import { methods } from 'page/common/methods';
 import { MenuOutlined } from '@ant-design/icons';
+import { Cont } from 'page/component/cont';
 
-export function Suspend(props) {
+function Suspend(props) {
   const columns = [
     {
       title: '订单创建时间',
@@ -120,5 +121,7 @@ export function Suspend(props) {
       />
     </>
   );
-  return <Content data={html} />
+  return <Cont p={<Content data={html} />} />;
 }
+
+export default Suspend;

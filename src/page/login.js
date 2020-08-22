@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, Row, Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { open } from 'app';
 import Css from '../css/login.module.css';
 
 function Login() {
@@ -9,7 +10,7 @@ function Login() {
         const un = values.username.trim();
         if (un !== "") {
             sessionStorage["un"] = un;
-            window.location.href = `/choose-account?user=${un}`;
+            open(`choose-account?user=${un}`);
         }
     }
     const login = (

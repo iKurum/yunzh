@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Form } from 'antd';
 import moment from 'moment';
-import { Excel } from 'page/componet/excel';
-import { Filter } from 'page/componet/filter';
-import { Content } from 'page/componet/content';
-import { CollapsePanel } from 'page/componet/collapsePanel';
-import { Retrieval } from 'page/componet/retrieval';
-import { SubBtn } from 'page/componet/subBtn';
+import { Excel } from 'page/component/excel';
+import { Filter } from 'page/component/filter';
+import { Content } from 'page/component/content';
+import { CollapsePanel } from 'page/component/collapsePanel';
+import { Retrieval } from 'page/component/retrieval';
+import { SubBtn } from 'page/component/subBtn';
 import { methods } from 'page/common/methods';
 import { VerticalAlignBottomOutlined, MenuOutlined } from '@ant-design/icons';
+import { Cont } from 'page/component/cont';
 
-export function Orders() {
+function Orders() {
   const columns = [
     {
       title: '订单创建时间',
@@ -380,5 +381,11 @@ export function Orders() {
     form.setFieldsValue({ 'range-picker': defaultDate[quickSel] });
   }, [quickSel, form, form.setFieldsValue, defaultDate]);
 
-  return <Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />
+  return (
+    <Cont
+      p={<Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />}
+    />
+  );
 }
+
+export default Orders;

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Content } from 'page/componet/content';
+import { Content } from 'page/component/content';
 import { Row, Form } from 'antd';
-import { Filter } from 'page/componet/filter';
-import { Retrieval } from 'page/componet/retrieval';
-import { SubBtn } from 'page/componet/subBtn';
-import { CollapsePanel } from 'page/componet/collapsePanel';
-import { Excel } from 'page/componet/excel';
-import { Tips } from 'page/componet/tips';
+import { Filter } from 'page/component/filter';
+import { Retrieval } from 'page/component/retrieval';
+import { SubBtn } from 'page/component/subBtn';
+import { CollapsePanel } from 'page/component/collapsePanel';
+import { Excel } from 'page/component/excel';
+import { Tips } from 'page/component/tips';
+import { Cont } from 'page/component/cont';
 
-export function Record(props) {
+function Record(props) {
   const columns = [
     {
       title: '调单流水号',
@@ -120,5 +121,7 @@ export function Record(props) {
       />
     </>
   );
-  return <Content data={html} />;
+  return <Cont p={<Content data={html} />} />;
 }
+
+export default Record;

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Col, Space, Select } from 'antd';
+import {open} from 'app';
 import Css from '../css/account.module.css';
 
 function account() {
-  const { Option } = Select
+  const { Option } = Select;
   const onChange = value => {
     console.log(`selected ${value}`);
     if (sessionStorage['un']) {
       sessionStorage['ac'] = value;
-      window.location.href = `/main?p=index`;
+      open('/');
     } else
-      window.location.href = '/login';
+      open('login');
   }
 
   const html = (

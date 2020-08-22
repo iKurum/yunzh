@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'antd';
-import { Content } from 'page/componet/content';
-import { Filter } from 'page/componet/filter';
-import Css from '../../css/createTask.module.css';
+import { Content } from 'page/component/content';
+import { Filter } from 'page/component/filter';
+import Css from 'css/createTask.module.css';
+import { Cont } from 'page/component/cont';
 
-export function CreateTask(props) {
+function CreateTask(props) {
   const [radio1, setRadio1] = useState();
   const [radio2, setRadio2] = useState();
   const [radio3, setRadio3] = useState();
@@ -76,5 +77,7 @@ export function CreateTask(props) {
       </Row>
     </Form>
   );
-  return <Content data={html} />;
+  return <Cont p={<Content data={html} />} />;
 }
+
+export default CreateTask;

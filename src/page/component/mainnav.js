@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import {
   HomeFilled,
@@ -8,10 +8,9 @@ import {
   FundFilled,
   AppstoreFilled
 } from '@ant-design/icons';
-import { PageContent } from './content';
+import { go, open } from 'app';
 
 export function MainNav(props) {
-  const goPage = useContext(PageContent);
   const rootSubmenuKeys = ['首页', '交易中心', '财务中心', '商户中心', '数据中心', '系统中心'];
   const [openKey, setOpenKey] = useState([]);
   const { Sider } = Layout;
@@ -233,14 +232,8 @@ export function MainNav(props) {
     }
   ];
 
-  const m = (l, url) => l.map((v, _) => {
+  const m = l => l.map((v, _) => {
     const icon = v.icon ? <v.icon /> : null;
-
-    let u = '';
-    if (url) {
-      u = v.id ? `${url}/${v.id}` : `${url}`
-    } else
-      u = `/${v.id}`
 
     if (v.children) {
       return (
@@ -248,24 +241,29 @@ export function MainNav(props) {
           key={v.name}
           title={v.name}
           icon={icon}
-        >{m(v.children, u)}</SubMenu>
+        >{m(v.children)}</SubMenu>
       );
     } else
       return (
-        <Item key={v.name} icon={icon} onClick={() => {
-          if (v.name === '首页') {
-            setOpenKey([]);
-            props.setBread([]);
-          } else {
-            props.setBread(openKey.concat(v.name))
-          }
-          goPage(v.id);
-        }}>
+        <Item key={v.name} icon={icon} onClick={() => { page(v.id) }}>
           {v.name}
         </Item>
       );
   });
-  const onOpenChange = openKeys => {
+
+  function page(p) {
+    console.log('main nav ~~~~~~');
+    if (p === 'index') {
+      setOpenKey([]);
+      props.setBread([]);
+      open('/');
+    } else {
+      props.setBread(openKey.concat(p));
+      go(`/cont/${p}`);
+    }
+  };
+
+  function onOpenChange(openKeys) {
     const lastOpenKey = openKeys.find(key => openKey.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(lastOpenKey) === -1) {
       setOpenKey([...[openKeys[0]], openKeys[openKeys.length - 1]]);

@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Row, Form, List, Empty, Button } from 'antd';
-import { Content } from 'page/componet/content';
-import { Filter } from 'page/componet/filter';
-import { SubBtn } from 'page/componet/subBtn';
-import { PageContent } from 'page/componet/content';
+import { Content } from 'page/component/content';
+import { Filter } from 'page/component/filter';
+import { SubBtn } from 'page/component/subBtn';
+import { Cont } from 'page/component/cont';
+import { open } from 'app';
 
-export function Tasks(props) {
-  const goPage = useContext(PageContent);
+function Tasks(props) {
   const [active, setActive] = useState('tab1');
   const tabList = [
     { key: 'tab1', tab: '进行中' },
@@ -40,7 +40,7 @@ export function Tasks(props) {
           dataSource={data}
           locale={{
             emptyText: (<Empty description={<span>暂无进行中的任务~</span>}>
-              <Button type='primary' onClick={() => { goPage('create-task') }}>新建任务批次</Button>
+              <Button type='primary' onClick={() => { open('cont/create-task') }}>新建任务批次</Button>
             </Empty>)
           }}
         >
@@ -52,5 +52,11 @@ export function Tasks(props) {
 
   function onTabChange(key) { setActive(key) };
 
-  return <Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />;
+  return (
+    <Cont
+      p={<Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />}
+    />
+  );
 }
+
+export default Tasks;
