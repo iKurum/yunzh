@@ -8,7 +8,7 @@ import { SubBtn } from 'page/component/subBtn';
 import { Excel } from 'page/component/excel';
 import { VerticalAlignBottomOutlined } from '@ant-design/icons';
 import { Tips } from 'page/component/tips';
-import { Cont } from 'page/component/cont';
+import { checkIframe } from 'page/main';
 
 function Electronic() {
   const columns = [
@@ -110,7 +110,8 @@ function Electronic() {
     console.log('Success: ', vlues);
   }
 
-  return <Cont p={<Content data={html} />} />;
+  if (checkIframe()) return <Content data={html} />;
+  return null;
 }
 
 export default Electronic;

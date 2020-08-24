@@ -1,3 +1,4 @@
+## 修改 yarn registry
 yarn config set registry https://registry.npm.taobao.org/
 
 ## First

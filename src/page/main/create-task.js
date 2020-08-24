@@ -3,7 +3,7 @@ import { Row, Col, Form, Button } from 'antd';
 import { Content } from 'page/component/content';
 import { Filter } from 'page/component/filter';
 import Css from 'css/createTask.module.css';
-import { Cont } from 'page/component/cont';
+import { checkIframe } from 'page/main';
 
 function CreateTask(props) {
   const [radio1, setRadio1] = useState();
@@ -77,7 +77,8 @@ function CreateTask(props) {
       </Row>
     </Form>
   );
-  return <Cont p={<Content data={html} />} />;
+  if (checkIframe()) return <Content data={html} />;
+  return null;
 }
 
 export default CreateTask;

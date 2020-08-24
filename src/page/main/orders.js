@@ -9,7 +9,7 @@ import { Retrieval } from 'page/component/retrieval';
 import { SubBtn } from 'page/component/subBtn';
 import { methods } from 'page/common/methods';
 import { VerticalAlignBottomOutlined, MenuOutlined } from '@ant-design/icons';
-import { Cont } from 'page/component/cont';
+import { checkIframe } from 'page/main';
 
 function Orders() {
   const columns = [
@@ -381,11 +381,12 @@ function Orders() {
     form.setFieldsValue({ 'range-picker': defaultDate[quickSel] });
   }, [quickSel, form, form.setFieldsValue, defaultDate]);
 
-  return (
-    <Cont
-      p={<Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />}
-    />
-  );
+  if (checkIframe()) return <Content
+    data={content[active]}
+    tabList={tabList}
+    activeTabKey={active}
+    cb={onTabChange} />;
+  return null;
 }
 
 export default Orders;

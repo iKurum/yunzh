@@ -7,7 +7,7 @@ import { SubBtn } from 'page/component/subBtn';
 import { CollapsePanel } from 'page/component/collapsePanel';
 import { Excel } from 'page/component/excel';
 import { Tips } from 'page/component/tips';
-import { Cont } from 'page/component/cont';
+import { checkIframe } from 'page/main';
 
 function Record(props) {
   const columns = [
@@ -121,7 +121,8 @@ function Record(props) {
       />
     </>
   );
-  return <Cont p={<Content data={html} />} />;
+  if (checkIframe()) return <Content data={html} />;
+  return null;
 }
 
 export default Record;

@@ -6,7 +6,7 @@ import { SubBtn } from 'page/component/subBtn';
 import { Excel } from 'page/component/excel';
 import { methods } from 'page/common/methods';
 import { MenuOutlined } from '@ant-design/icons';
-import { Cont } from 'page/component/cont';
+import { checkIframe } from 'page/main';
 
 function Suspend(props) {
   const columns = [
@@ -121,7 +121,8 @@ function Suspend(props) {
       />
     </>
   );
-  return <Cont p={<Content data={html} />} />;
+  if (checkIframe()) return <Content data={html} />;
+  return null;
 }
 
 export default Suspend;

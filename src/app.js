@@ -78,7 +78,7 @@ let goPage=null,count=0,Target=null;
 function App(props){
 	let [Dom,setDom]=useState(null);
 	count++;
-	console.log('app --'+count);
+	// console.log('app --'+count);
 
 	function goHome(r){
 		return {
@@ -129,7 +129,7 @@ export function open(url,blank){
 }
 
 export function go(url,isself){
-	url=fmUrl(url);
+	url = fmUrl(url);
 	if(goPage){
 		window.history.pushState(null,null,url);
 		goPage(Analysis(window.location.href),isself);

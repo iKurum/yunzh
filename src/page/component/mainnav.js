@@ -8,11 +8,11 @@ import {
   FundFilled,
   AppstoreFilled
 } from '@ant-design/icons';
-import { go, open } from 'app';
+import { go } from 'app';
 
 export function MainNav(props) {
   const rootSubmenuKeys = ['首页', '交易中心', '财务中心', '商户中心', '数据中心', '系统中心'];
-  const [openKey, setOpenKey] = useState([]);
+  const [openKey, setOpenKey] = useState(['首页']);
   const { Sider } = Layout;
   const { Item, SubMenu } = Menu;
   const menuList = [
@@ -245,23 +245,21 @@ export function MainNav(props) {
       );
     } else
       return (
-        <Item key={v.name} icon={icon} onClick={() => { page(v.id) }}>
+        <Item key={v.name} icon={icon} onClick={() => { page(v.id, v.name) }}>
           {v.name}
         </Item>
       );
   });
 
-  function page(p) {
-    console.log('main nav ~~~~~~');
-    if (p === 'index') {
-      setOpenKey([]);
-      props.setBread([]);
-      open('/');
+  function page(id, name) {
+    if (name === '首页') {
+      setOpenKey([name]);
+      props.setBread([name]);
     } else {
-      props.setBread(openKey.concat(p));
-      go(`/cont/${p}`);
+      props.setBread(openKey.concat(name));
     }
-  };
+    go(`/main/${id}`);
+  }
 
   function onOpenChange(openKeys) {
     const lastOpenKey = openKeys.find(key => openKey.indexOf(key) === -1);
@@ -278,6 +276,7 @@ export function MainNav(props) {
         theme='dark'
         mode='inline'
         openKeys={openKey}
+        defaultSelectedKeys={openKey}
         onOpenChange={onOpenChange}
       >
         {m(menuList)}

@@ -3,8 +3,8 @@ import { Row, Form, List, Empty, Button } from 'antd';
 import { Content } from 'page/component/content';
 import { Filter } from 'page/component/filter';
 import { SubBtn } from 'page/component/subBtn';
-import { Cont } from 'page/component/cont';
 import { open } from 'app';
+import { checkIframe } from 'page/main';
 
 function Tasks(props) {
   const [active, setActive] = useState('tab1');
@@ -52,11 +52,11 @@ function Tasks(props) {
 
   function onTabChange(key) { setActive(key) };
 
-  return (
-    <Cont
-      p={<Content data={content[active]} tabList={tabList} activeTabKey={active} cb={onTabChange} />}
-    />
-  );
+  if (checkIframe()) return <Content
+    data={content[active]}
+    tabList={tabList}
+    activeTabKey={active}
+    cb={onTabChange} />;
+  return null;
 }
-
 export default Tasks;

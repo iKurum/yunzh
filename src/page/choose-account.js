@@ -9,7 +9,7 @@ function account() {
     console.log(`selected ${value}`);
     if (sessionStorage['un']) {
       sessionStorage['ac'] = value;
-      open('/');
+      open('/main/index');
     } else
       open('login');
   }
