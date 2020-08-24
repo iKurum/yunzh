@@ -1,24 +1,29 @@
 import React from 'react';
-import { Form, Input, Col, InputNumber, DatePicker, Select, Radio, Space, Row } from 'antd';
-/*
-* Filter 
-* inForm: boolean
-* data: [{
-  o: 1,
-  p: 'placeholder',
-  cs: 'col-span',
-  s: {style},
-  v: value,
-  label: '',
-  fn: 'name(inForm)',
-  dv: 'defaultValue',
-  bs: {buttonStyle},
-  cb: () => {},
-  fc: {FormConfig(inForm)},
-  c: [{v: value, n: name}],
-}]
-* o: 1-Input 2-InputNumber 3-Select 4-RangePicker 5-Radio
-*/
+import { Form, Input, Col, InputNumber, DatePicker, Select, Radio, Space } from 'antd';
+import Css from 'css/filter.module.css';
+
+/**
+ * Filter 
+ * @param {Boolean} props.inForm
+ * @param {Array} props.data
+ * [{
+    o: 1,
+    p: 'placeholder',
+    cs: 'col-span',
+    s: {style},
+    v: value,
+    label: 'string',
+    tooltip: 'string',
+    fn: 'name(inForm)',
+    dv: 'defaultValue',
+    bs: {buttonStyle},
+    cb: () => {},
+    fc: {FormConfig(inForm)},
+    c: [{v: value, n: name}],
+  }]
+ * @param {Number} props.data[].o
+ * 1-Input 2-InputNumber 3-Select 4-RangePicker 5-Radio
+ */
 export function Filter(props) {
   const { RangePicker } = DatePicker;
   const { Option } = Select;
@@ -71,24 +76,26 @@ export function Filter(props) {
             return (
               <Col style={v.s} key={i} span={!!v.cs && v.cs[0]} offset={!!v.cs && v.cs[1]}>
                 <Form.Item name={v.fn} label={v.label} rules={v.rules}>
-                  <Radio.Group defaultValue={v.dv} buttonStyle={v.bs} onChange={v.cb} value={v.v}>
-                    <Space>
-                      {
-                        v.c.map((v, i) => {
-                          if (v.btn) {
-                            return <Radio.Button key={i} value={v.v} disabled={v.d}>{v.n}</Radio.Button>
-                          } else {
-                            return <Radio key={i} value={v.v} disabled={v.d}>{v.n}</Radio>
-                          }
-                        })
-                      }
-                    </Space>
-                  </Radio.Group>
-                  {
-                    !!v.tooltip
-                    &&
-                    <Row><Col>{v.tooltip}</Col></Row>
-                  }
+                  <div>
+                    <Radio.Group defaultValue={v.dv} buttonStyle={v.bs} onChange={v.cb} value={v.v}>
+                      <Space>
+                        {
+                          v.c.map((v, i) => {
+                            if (v.btn) {
+                              return <Radio.Button key={i} value={v.v} disabled={v.d}>{v.n}</Radio.Button>
+                            } else {
+                              return <Radio key={i} value={v.v} disabled={v.d}>{v.n}</Radio>
+                            }
+                          })
+                        }
+                      </Space>
+                    </Radio.Group>
+                    {
+                      !!v.tooltip
+                      &&
+                      <span className={Css.tooltip}>{v.tooltip}</span>
+                    }
+                  </div>
                 </Form.Item>
               </Col>
             );

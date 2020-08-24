@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'antd';
 import { Content } from 'page/component/content';
 import { Filter } from 'page/component/filter';
-import Css from 'css/createTask.module.css';
 import { checkIframe } from 'page/main';
+import Css from 'css/createTask.module.css';
 
 function CreateTask(props) {
   const [radio1, setRadio1] = useState();
@@ -32,6 +32,7 @@ function CreateTask(props) {
       },
       {
         o: 5, fn: '4', cs: ['12', 2], dv: '1', label: '验收标准',
+        tooltip: '无需线上验收时，请线下做好验收并保存验收凭证。',
         rules: [{ required: true }],
         cb: e => { setRadio2(e.target.value) },
         v: radio2,
@@ -41,6 +42,7 @@ function CreateTask(props) {
     [
       {
         o: 5, fn: '5', cs: ['12', 2], dv: '1', label: '验收标准',
+        tooltip: '选择“按效果付费”，用户完成任务后，您需要根据任务完成效果，填写结算金额',
         rules: [{ required: true }],
         cb: e => { setRadio3(e.target.value) },
         v: radio3,
@@ -54,7 +56,7 @@ function CreateTask(props) {
     ]
   ];
   const html = (
-    <Form>
+    <Form className={Css.form}>
       <Row>
         <Col span={24} className={Css.title}>任务描述</Col>
         <Filter data={list[0]} inForm />
@@ -77,6 +79,7 @@ function CreateTask(props) {
       </Row>
     </Form>
   );
+
   if (checkIframe()) return <Content data={html} />;
   return null;
 }

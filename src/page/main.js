@@ -5,7 +5,7 @@ import { MainNav } from 'page/component/mainnav';
 import { Footer } from 'page/component/mainfooter';
 import Login from 'page/login';
 import Index from 'page/main/index';
-import { setTarget, go, open, encodeUrl } from 'app';
+import { setTarget, go, open, encodeUrl, Loading } from 'app';
 import Css from 'css/main.module.css';
 
 export function checkIframe(v) {
@@ -44,7 +44,9 @@ function Main(props) {
 
   if (!pageInit && props.data && props.data.ref) pageInit = props.data.ref;
 
-  console.log(bread);
+  Loading();
+
+  // console.log(bread);
   return (
     <>
       {

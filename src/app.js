@@ -74,10 +74,11 @@ window.onpopstate=(e)=>{
 	go(window.location.href);
 };
 
-let goPage=null,count=0,Target=null;
+let goPage = null, Target = null;
+// let count = 0;
 function App(props){
 	let [Dom,setDom]=useState(null);
-	count++;
+	// count++;
 	// console.log('app --'+count);
 
 	function goHome(r){

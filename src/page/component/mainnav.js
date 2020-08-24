@@ -12,7 +12,7 @@ import { go } from 'app';
 
 export function MainNav(props) {
   const rootSubmenuKeys = ['首页', '交易中心', '财务中心', '商户中心', '数据中心', '系统中心'];
-  const [openKey, setOpenKey] = useState(['首页']);
+  const [openKey, setOpenKey] = useState(!!sessionStorage['nav'] ? sessionStorage['nav'].split(',') : ['首页']);
   const { Sider } = Layout;
   const { Item, SubMenu } = Menu;
   const menuList = [
@@ -66,7 +66,7 @@ export function MainNav(props) {
             },
             {
               name: '任务模板',
-              id: 'template'
+              id: 'task-template'
             }
           ]
         }
@@ -253,9 +253,11 @@ export function MainNav(props) {
 
   function page(id, name) {
     if (name === '首页') {
-      setOpenKey([name]);
+      sessionStorage['nav'] = [name];
+      setOpenKey(['首页']);
       props.setBread([name]);
     } else {
+      sessionStorage['nav'] = openKey.concat(name);
       props.setBread(openKey.concat(name));
     }
     go(`/main/${id}`);
